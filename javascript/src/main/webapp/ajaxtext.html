@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>ajax_text</title>
+
+</head>
+
+<body>
+<script>
+//ajax요청 객체를 생성 
+var request = new XMLHttpRequest()
+//alert(request)
+
+//서버에게 전송할 데이터가 있으면 생성
+
+//서버에게 요청할 준비
+//request.open('get','data/data.txt')
+
+//request.open('get','data/data.json')
+
+request.open('get','data/tel.xml')
+
+//서버에게 요청
+request.send('')
+
+//응답이 왔을 때 처리할 콜백을 등록 
+request.onreadystatechange = function(){
+	if(request.readyState ==4){
+		if(request.status >= 200 && request.status < 300){
+			
+	//가져온 내용을 출력
+	//alert(request.responseText)
+	/*
+	//읽어온 문자열을 저장 
+	var json = request.responseText
+	//json파싱
+	var data = JSON.parse(json)
+	alert(data[0].value)
+	//프론트앤드건 백앤드건 연습많이 해야함 
+	*/
+	
+	//이렇게 읽으면그대로 다 나와머리니까
+	//xml데이터는responseText대신에 responseXml
+	//alert(request.responseText)
+	//alert(request.responseXML)
+	
+	var xml = request.responseXML
+	//원하는 태그를 추출 
+	var names = xml.getElementsByTagName("name")
+	//alert(names)
+	
+	for(var i=0; i<names.length; i++){
+		var name = names[i].childNodes[0].nodeValue
+		alert(name)
+	}
+	
+	
+		}
+	}
+}
+
+
+</script>
+</body>
+
+</html>

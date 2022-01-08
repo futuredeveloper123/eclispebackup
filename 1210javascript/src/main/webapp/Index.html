@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>eclipse</h1>
+<input type = "button" value ="button" id ="btn"/>
+</body>
+<script>
+	var btn = document.getElementById("btn")
+	btn.addEventListener("click", function(e){
+		alaert("click")
+	})
+	
+	btn.addEventListener("click",(e)=>{
+		alert("second click")
+	})
+	
+	//var로 선언하면 동일한 이름의 변수를 여러 번 생성 가능 
+	var x =10;
+	var x = "jello";
+	//var는 이렇게 2개 쓸 수 있음 
+	console.log(x)
+	//var없이 선언하면 다른 영역에서도 사용이 가능 
+	
+	local = "local variable"
+	
+	var func = function() {
+		console.log(local)
+	}//밖에서 못 가져다 씀 
+	
+	//func()
+	//console.log(local)
+	
+	let y = 10
+	//let y = "hello";
+	//let은 동일한 영역에서 2번 생성 못함 
+	//let y = "hello error";
+	
+	//const는 읽기 전용 
+	const js="javascript"
+	//js="typescript"
+	
+	var obj ={name : "da", job : "mo"}
+	/*//기존의 방식 할당 
+	var name = obj.name
+	var job=obj.job
+	*/
+	
+	//구조 분해 할당 - 속성의 이름과 변수의 이름이 같아야 함.
+	const{name,job}=obj
+	console.log(name)
+	console.log(job)
+	
+	var disp = function(name = 'the'){
+		console.log(name)
+	}
+	
+	disp("dot")
+	disp()//기본값이 없으면 undefined  
+	
+	//매개변수의 개수에 상관없이 대입받기 
+	var restparam = function(...arg){
+		for(idx in arg){
+			console.log(arg[idx])
+		}
+	}
+	restparam("dm","dd")
+	
+	let msg ="world"
+	let str = 'hello ${msg}'
+	console.log(`hello ${msg}`)
+	
+</script>
+</html>
